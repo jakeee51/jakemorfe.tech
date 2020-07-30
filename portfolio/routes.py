@@ -9,6 +9,6 @@ import json, time, re, os
 if Config.RUN_MODE == "dev":
     print(">>>", os.path.basename(__file__))
 
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def home():
     return render_template("index.html")

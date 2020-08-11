@@ -1,0 +1,73 @@
+.portfolio-block.block-intro .avatar {
+  width: 150px;
+  height: 150px;
+  background-image: url("../../assets/img/avatars/avatar.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+  border-radius: 50px;
+  margin-bottom: 25px;
+  margin-top: 50px;
+}
+
+.portfolio-block {
+  padding-bottom: 60px;
+  padding-top: 25px;
+}
+
+.gradient {
+  background: linear-gradient(120deg,#006c1e,rgba(140,140,140,0.95));
+  color: #fff;
+}
+
+#navbarNav {
+  font-size: 20px;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #006c1e;
+  border-color: #006c1e;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  color: #000000;
+  border-color: #006c1e;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 2px solid;
+  padding: .375rem 1rem;
+  font-size: 30px;
+  line-height: 1.5;
+  border-radius: 2em;
+  transition: color .5s ease-in-out,background-color .5s ease-in-out,border-color .5s ease-in-out,box-shadow .5s ease-in-out;
+}
+
+@media (min-width: 300px) {
+  .portfolio-navbar .logo {
+    font-size: 20px;
+  }
+}
+
+.portfolio-navbar .logo {
+  font-size: 25px;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+  font-size: 20px;
+  line-height: inherit;
+  white-space: nowrap;
+}
+

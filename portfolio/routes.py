@@ -21,10 +21,6 @@ def index():
 def about_me():
     return render_template("about_me.html")
 
-@app.route("/projects", methods=["GET", "POST"])
-def projects():
-    return render_template("projects.html")
-
 @app.route("/cv", methods=["GET", "POST"])
 def cv():
     return render_template("cv.html")
@@ -36,3 +32,11 @@ def contact():
 @app.route("/hire_me", methods=["GET", "POST"])
 def hire_me():
     return render_template("hire_me.html")
+
+@app.route("/projects", defaults={"project": None})
+@app.route("/projects/<project>", methods=["GET", "POST"])
+def projects(project):
+    if project == None:
+        return render_template("projects.html")
+    else:
+        return render_template(f"projects/{project}.html")

@@ -51,14 +51,14 @@
   transition: color .5s ease-in-out,background-color .5s ease-in-out,border-color .5s ease-in-out,box-shadow .5s ease-in-out;
 }
 
-@media (min-width: 300px) {
-  .portfolio-navbar .logo {
-    font-size: 20px;
-  }
+.portfolio-navbar .logo {
+  font-size: 20px;
 }
 
-.portfolio-navbar .logo {
-  font-size: 25px;
+@media (min-width: 576px) {
+  .portfolio-navbar .logo {
+    font-size: 25px;
+  }
 }
 
 .navbar-brand {
@@ -69,5 +69,11 @@
   font-size: 20px;
   line-height: inherit;
   white-space: nowrap;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #006c1e;
+  border-color: #006c1e;
 }
 

@@ -21,7 +21,7 @@ except:
    export_dir = "portfolio/templates/"
 templates = os.listdir(export_dir)
 templates = get_files(templates, export_dir)
-print(templates)
+
 for page in templates:
    template = export_dir + page
    with open(template, "r+") as f:

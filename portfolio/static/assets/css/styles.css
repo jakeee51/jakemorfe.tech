@@ -22,7 +22,7 @@
 }
 
 #navbarNav {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .btn-outline-primary:hover {
@@ -75,5 +75,34 @@
   color: #fff;
   background-color: #006c1e;
   border-color: #006c1e;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.btn-outline-primary {
+  color: #006c1e;
+  border-color: #006c1e;
+}
+
+a:hover {
+  color: rgb(255,255,255);
+  text-decoration: underline;
+}
+
+.btn-outline-primary.focus, .btn-outline-primary:focus {
+  box-shadow: 0 0 0 .2rem rgba(0,108,30,0.4);
+}
+
+.btn.focus, .btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(0,108,30,0.4);
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus, .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .2rem rgba(0,108,30,0.4);
 }
 

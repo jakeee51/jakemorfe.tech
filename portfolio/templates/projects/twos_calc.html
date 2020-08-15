@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Projects - David Jake Morfe's Portfolio</title>
+    <title>Project Page - David Jake Morfe's Portfolio</title>
     <meta name="description" content="Welcome to my Portfolio Website! Learn about me and take a look at all my projects!">
     <link rel="stylesheet" href="{{ url_for('static',filename='assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
@@ -22,9 +22,8 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('about_me') }}">About me</a></li>
                     <li class="nav-item" role="presentation">
-                        <div class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="{{ url_for('projects') }}">Projects</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='gomaps') }}">First Item</a><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='geoliberator') }}">Second Item</a><a class="dropdown-item" role="presentation"
-                                    href="{{ url_for('projects', project='MainEdge') }}">Third Item</a></div>
+                        <div class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="{{ url_for('projects') }}">Dropdown </a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='geoliberator') }}">First Item</a><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='gomaps">Second Item<') }}">Third Item</a></div>
                         </div>
                     </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('cv') }}">CV</a></li>
@@ -33,33 +32,48 @@
         </div>
         </div>
     </nav>
-    <main class="page projects-page">
-        <section class="portfolio-block projects-with-sidebar">
+    <main class="page project-page">
+        <section class="portfolio-block project">
             <div class="container">
                 <div class="heading">
-                    <h2>Recent Work</h2>
+                    <h2>Twos Calculator</h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
-                        <ul class="list-unstyled sidebar">
-                            <li><a class="active" href="#">All</a></li>
-                            <li><a href="#">Bootstrap</a></li>
-                            <li><a href="#">Clean</a></li>
-                            <li><a href="#">Colors</a></li>
-                            <li><a href="#">Portfolio</a></li>
-                        </ul>
+                    <div class="col-12 col-md-6 offset-md-1 info">
+                        <h3>Description</h3>
+                        <p>This is a two's complement binary number calculator I created. It is written in C++ and is compatible with varying bit lengths of up to 32 bits. Give it a try!</p>
                     </div>
-                    <div class="col-md-9">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"><img class="img-fluid image scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image1.jpg') }}"></a></div>
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"><img class="img-fluid image scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image2.jpg') }}"></a></div>
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"><img class="img-fluid image scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image3.jpg') }}"></a></div>
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"><img class="img-fluid image scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image4.jpg') }}"></a></div>
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"><img class="img-fluid image scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image5.jpg') }}"></a></div>
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"><img class="img-fluid image scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image6.jpg') }}"></a></div>
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"><img class="img-fluid image scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image7.jpg') }}"></a></div>
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"><img class="img-fluid image scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image8.jpg') }}"></a></div>
-                            <div class="col-md-6 col-lg-4 project-sidebar-card"><a href="#"><img class="img-fluid image scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image9.jpg') }}"></a></div>
+                    <div class="col-12 col-md-3 offset-md-1 meta">
+                        <div class="tags"><span class="meta-heading">Tags</span><a href="https://github.com/jakeee51/Twos-Calculator">Source Code</a><span class="meta-heading">Date</span><span>08-15-2020</span></div>
+                    </div>
+                </div><div class="twos-calc">
+    <form action="#" method="post">
+        <input type="number" value=4 />
+        <input type="number" value=0101 />
+            <select>
+                <option value="+">+</option>
+                <option value="—">—</option>
+                <option value="X">X</option>
+                <option value="÷">÷</option>
+            </select>
+        <input type="number" value=1010 />
+        <button class="btn btn-primary" type="submit">=</button>
+    </form>
+</div>
+                <div class="more-projects">
+                    <h3 class="text-center">More Projects</h3>
+                    <div class="row gallery">
+                        <div class="col-md-4 col-lg-3">
+                            <div class="item"><a href="#"><img class="img-fluid scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image2.jpg') }}"></a></div>
+                        </div>
+                        <div class="col-md-4 col-lg-3">
+                            <div class="item"><a href="#"><img class="img-fluid scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image3.jpg') }}"></a></div>
+                        </div>
+                        <div class="col-md-4 col-lg-3">
+                            <div class="item"><a href="#"><img class="img-fluid scale-on-hover" src="{{ url_for('static',filename='assets/img/tech/image4.jpg') }}"></a></div>
+                        </div>
+                        <div class="col-md-4 col-lg-3">
+                            <div class="item"><a href="#"><img class="img-fluid scale-on-hover" src="{{ url_for('static',filename='assets/img/nature/image5.jpg') }}"></a></div>
                         </div>
                     </div>
                 </div>

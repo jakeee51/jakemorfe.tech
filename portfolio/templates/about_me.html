@@ -20,8 +20,13 @@
                 class="collapse navbar-collapse text-capitalize" id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{{ url_for('about_me') }}">About me</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('projects') }}">Projects</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('about_me') }}">About me</a></li>
+                    <li class="nav-item" role="presentation">
+                        <div class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="{{ url_for('projects') }}">Projects</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='gomaps') }}">First Item</a><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='geoliberator') }}">Second Item</a><a class="dropdown-item" role="presentation"
+                                    href="{{ url_for('projects', project='MainEdge') }}">Third Item</a></div>
+                        </div>
+                    </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('cv') }}">CV</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
                 </ul>

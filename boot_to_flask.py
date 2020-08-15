@@ -37,13 +37,14 @@ for page in templates:
             path = path.strip('"')
             html = re.sub(fr"(\.\./)?{path}", f"{{{{ url_for('static',filename='{path}') }}}}", html)
       for page in pages:
+         page = re.sub(r"^\.\./", '', page)
          page = page.strip('"')
          route = re.sub(r'\.html', '', page)
          if 'projects/' in route:
             comp = route.split('/')
-            html = re.sub(fr"{page}", f"{{{{ url_for('{comp[0]}', project='{comp[1]}') }}}}", html)
+            html = re.sub(fr"(\.\./)?{page}", f"{{{{ url_for('{comp[0]}', project='{comp[1]}') }}}}", html)
          else:
-            html = re.sub(fr"{page}", f"{{{{ url_for('{route}') }}}}", html)
+            html = re.sub(fr"(\.\./)?{page}", f"{{{{ url_for('{route}') }}}}", html)
       f.seek(0)
       f.write(html)
       f.truncate()

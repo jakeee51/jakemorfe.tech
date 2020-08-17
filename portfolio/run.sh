@@ -1,2 +1,2 @@
 #!/bin/bash
-./twos_calc $1 $2 $3 $4; #
+./portfolio/twos_calc $1 $2 $3 $4; #

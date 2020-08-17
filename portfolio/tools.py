@@ -2,7 +2,7 @@ from config import Config
 from email.message import EmailMessage
 from random import randint
 from datetime import datetime
-import smtplib, urllib, json, time, re, os
+import subprocess, smtplib, urllib, json, time, re, os
 
 if Config.RUN_MODE == "dev":
     print(">>>", os.path.basename(__file__))
@@ -32,3 +32,15 @@ def send_post(route, data={}):
     data_encoded = data_encoded.encode("ascii")
     resp = urllib.request.urlopen(url, data_encoded)
     return resp.read().decode()
+
+def get_tca(args):
+    CREATE_NO_WINDOW = 0x08000000
+    try: # for Windows
+        get = subprocess.Popen(["bash", "./portfolio/run.sh", args], stdout=subprocess.PIPE,
+                               creationflags=CREATE_NO_WINDOW)
+    except: # for Linux'''
+        get = subprocess.Popen(["./portfolio/run.sh", args], stdout=subprocess.PIPE)
+    o, e = get.communicate()
+    res = o.decode().strip('\n').split(',')
+    ret = json.dumps(res)
+    return ret

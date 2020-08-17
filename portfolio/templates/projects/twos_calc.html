@@ -8,24 +8,38 @@
     <meta name="description" content="Welcome to my Portfolio Website! Learn about me and take a look at all my projects!">
     <link rel="stylesheet" href="{{ url_for('static',filename='assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/fonts/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='assets/fonts/ionicons.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
     <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/styles.css') }}">
+<!-- Custom Imports -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="icon" href="{{ url_for('static',filename='assets/img/favicon.ico') }}">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top portfolio-navbar gradient">
         <div class="container"><a class="navbar-brand text-white logo" href="#">David Jake Morfe's Portfolio</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse text-capitalize" id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('about_me') }}">About me</a></li>
-                    <li class="nav-item" role="presentation">
-                        <div class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="{{ url_for('projects') }}">Dropdown </a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='geoliberator') }}">First Item</a><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='gomaps">Second Item<') }}">Third Item</a></div>
-                        </div>
-                    </li>
+                    <li class="nav-item" role="presentation"><script>
+    function goProjects() {
+        window.location.href="{{ url_for('projects') }}";
+    }
+</script>
+<div id="proj-drop" class="btn-group">
+    <button class="btn btn-primary" aria-haspopup="true" type="button" onclick="goProjects()">Projects</button>
+    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="{{ url_for('projects', project='gomaps') }}">Gomaps</a>
+        <a class="dropdown-item" href="{{ url_for('projects', project='geoliberator') }}">GeoLiberator</a>
+        <a class="dropdown-item" href="{{ url_for('projects', project='twos_calc') }}">Twos Calculator</a>
+    </div>
+</div></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('cv') }}">CV</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
                 </ul>
@@ -44,21 +58,82 @@
                         <p>This is a two's complement binary number calculator I created. It is written in C++ and is compatible with varying bit lengths of up to 32 bits. Give it a try!</p>
                     </div>
                     <div class="col-12 col-md-3 offset-md-1 meta">
-                        <div class="tags"><span class="meta-heading">Tags</span><a href="https://github.com/jakeee51/Twos-Calculator">Source Code</a><span class="meta-heading">Date</span><span>08-15-2020</span></div>
+                        <div class="tags"><span class="meta-heading">Tags</span><a href="https://github.com/jakeee51/Twos-Calculator" target="_blank">Source Code</a><span class="meta-heading">Date Completed</span><span>08-15-2020</span></div>
                     </div>
-                </div><div class="twos-calc">
-    <form action="#" method="post">
-        <input type="number" value=4 />
-        <input type="number" value=0101 />
-            <select>
-                <option value="+">+</option>
-                <option value="—">—</option>
-                <option value="X">X</option>
-                <option value="÷">÷</option>
+                </div><script>
+    $(document).ready(function(){
+        $(".tcc").click(function(){
+            $.post("{{ url_for('twos_calc') }}",
+            {
+                w: document.getElementById("w").value,
+                arith: document.getElementById("arith").value,
+                num1: document.getElementById("num1").value,
+                num2: document.getElementById("num2").value
+            },
+            function(data, status){
+                var ans = JSON.parse(data);
+                var tcab = document.getElementById("tcab");
+                var tcad = document.getElementById("tcad");
+                tca.style.visibility = "visible";
+                tcab.innerHTML = "Binary Result = " + ans[0];
+                tcad.innerHTML = "Decimal Result = " + ans[1];
+            });
+        });
+    });
+</script>
+<div class="twos-calc">
+    <p style="font-size: 20px;"><b><i>w = </i></b>
+        <select id="w" class="btn btn-outline-primary" onmousedown="if(this.options.length>4){this.size=4;}" onchange='this.size=0;' onblur="this.size=0;">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+        </select>
+        <b><i>bits</i></b>
+    </p>
+    <div class="twos-calc-nums">
+        <input id="num1" type="number" value="0101" />
+            <select id="arith" class="btn btn-outline-primary">
+                <option value="+" selected>+</option>
+                <option value="-">—</option>
+                <option value="x">x</option>
+                <option value="/">÷</option>
             </select>
-        <input type="number" value=1010 />
-        <button class="btn btn-primary" type="submit">=</button>
-    </form>
+        <input id="num2" type="number" value="1010" />
+        <button class="btn btn-outline-primary tcc">=</button>
+        <div id="tca" style="font-size: 25px; font-weight: bold; visibility: hidden;">
+            <p id="tcab">Binary Result: </p>
+            <p id="tcad">Decimal Result: </p>
+        </div>
+    </div>
 </div>
                 <div class="more-projects">
                     <h3 class="text-center">More Projects</h3>
@@ -86,25 +161,6 @@
             <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram-outline"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a></div>
         </div>
     </footer>
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-        <div class="container"><a class="navbar-brand text-white logo" href="#">David Jake Morfe's Portfolio</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div
-                class="collapse navbar-collapse text-capitalize" id="navbarNav">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('about_me') }}">About me</a></li>
-                    <li class="nav-item" role="presentation">
-                        <div class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="{{ url_for('projects') }}">Projects</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='gomaps') }}">First Item</a><a class="dropdown-item" role="presentation" href="{{ url_for('projects', project='geoliberator') }}">Second Item</a><a class="dropdown-item" role="presentation"
-                                    href="{{ url_for('projects', project='MainEdge') }}">Third Item</a></div>
-                        </div>
-                    </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('cv') }}">CV</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
-                </ul>
-        </div>
-        </div>
-    </nav>
     <script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static',filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>

@@ -1,3 +1,34 @@
+#tca {
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  #tca {
+    text-align: left;
+  }
+}
+
+.twos-calc-nums {
+  padding-left: 110px;
+}
+
+@media (max-width: 576px) {
+  .twos-calc-nums {
+    padding-left: 0px;
+    padding-right: 5px;
+  }
+}
+
+.twos-calc {
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .twos-calc {
+    text-align: left;
+  }
+}
+
 .portfolio-block.block-intro .avatar {
   width: 150px;
   height: 150px;
@@ -104,5 +135,14 @@ a:hover {
 
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-outline-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 .2rem rgba(0,108,30,0.4);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+#proj-drop {
+  padding-right: 0px;
+  margin-right: 0px;
 }
 

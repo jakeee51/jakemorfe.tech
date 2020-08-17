@@ -33,6 +33,17 @@ def contact():
 def hire_me():
     return render_template("hire_me.html")
 
+@app.route("/twos_calc", methods=["POST"])
+def twos_calc():
+    if request.method == "POST":
+        w = request.form["w"]
+        op = request.form["arith"]
+        num1 = request.form["num1"]
+        num2 = request.form["num2"]
+        args = f"{w} {op} {num1} {num2}"
+        resp = get_tca(args)
+        return resp
+
 @app.route("/projects", defaults={"project": None})
 @app.route("/projects/<project>", methods=["GET", "POST"])
 def projects(project):

@@ -1,3 +1,25 @@
+.btn-group:hover .dropdown-menu {
+  display: block;
+}
+
+.btn-projects:active {
+  color: rgba(255,255,255,0.75);
+  border: none;
+}
+
+.btn-projects:hover .dropdown-menu {
+  color: rgba(255,255,255,0.75);
+}
+
+.btn-projects {
+  color: rgb(255,255,255);
+  background-color: inherit;
+  font-weight: bold;
+  font-size: 25px;
+  border: inherit;
+  padding-top: 8px;
+}
+
 #tca {
   text-align: center;
 }

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='assets/fonts/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='assets/fonts/ionicons.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/Navigation-with-Button.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/styles.css') }}">
 <!-- Custom Imports -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -32,8 +33,8 @@
     }
 </script>
 <div id="proj-drop" class="btn-group">
-    <button class="btn btn-primary" aria-haspopup="true" type="button" onclick="goProjects()">Projects</button>
-    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
+    <button class="btn-projects" aria-haspopup="true" type="button" onclick="goProjects()">Projects</button>
+    <button class="btn-projects" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
     <div class="dropdown-menu">
         <a class="dropdown-item" href="{{ url_for('projects', project='gomaps') }}">Gomaps</a>
         <a class="dropdown-item" href="{{ url_for('projects', project='geoliberator') }}">GeoLiberator</a>

@@ -33,14 +33,27 @@
     }
 </script>
 <div id="proj-drop" class="btn-group">
-    <button class="btn-projects" aria-haspopup="true" type="button" onclick="goProjects()">Projects</button>
-    <button class="btn-projects" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+    <button id="prjb" class="btn-projects" aria-haspopup="true" type="button" onclick="goProjects()">Projects</button>
+    <button id="pdpd" class="btn-projects" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
     <div class="dropdown-menu">
         <a class="dropdown-item" href="{{ url_for('projects', project='gomaps') }}">Gomaps</a>
         <a class="dropdown-item" href="{{ url_for('projects', project='geoliberator') }}">GeoLiberator</a>
         <a class="dropdown-item" href="{{ url_for('projects', project='twos_calc') }}">Twos Calculator</a>
     </div>
-</div></li>
+</div>
+<script>
+    function myFunction(x) {
+        if (x.matches) { // If media query matches
+            document.getElementById("pdpd").disabled = false;
+        } else {
+            document.getElementById("pdpd").disabled = true;
+        }
+    }
+
+    var x = window.matchMedia("(max-width: 576px)")
+    myFunction(x) // Call listener function at run time
+    x.addListener(myFunction) // Attach listener function on state changes
+</script></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('cv') }}">CV</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
                 </ul>

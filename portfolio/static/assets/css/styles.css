@@ -1,13 +1,13 @@
-.btn-group:hover .dropdown-menu {
-  display: block;
-}
-
-.btn-projects:active {
+.btn-projects:hover {
   color: rgba(255,255,255,0.75);
-  border: none;
 }
 
 .btn-projects:hover .dropdown-menu {
+  color: rgba(255,255,255,0.75);
+}
+
+.btn-group:hover .dropdown-menu {
+  display: block;
   color: rgba(255,255,255,0.75);
 }
 
@@ -166,5 +166,9 @@ a:hover {
 #proj-drop {
   padding-right: 0px;
   margin-right: 0px;
+}
+
+.disabled {
+  pointer-events: none;
 }
 

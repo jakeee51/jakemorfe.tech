@@ -1,6 +1,7 @@
 from flask import Flask, session, redirect, url_for, render_template,\
      request, make_response
 from datetime import datetime
+from GeoLiberator import parse_address
 from portfolio import application as app
 from config import Config
 from portfolio.tools import *
@@ -42,6 +43,21 @@ def twos_calc():
         num2 = request.form["num2"]
         args = f"{w} {op} {num1} {num2}"
         resp = get_tca(args)
+        return resp
+
+@app.route("/GL", methods=["POST"])
+def GL():
+    if request.method == "POST":
+        addr = request.form["addr"]
+        parse = request.form["parse"]
+        resp = parse_address(addr, parse)
+        return resp
+
+@app.route("/gmapi", methods=["POST"])
+def gmapi():
+    if request.method == "POST":
+        addr = request.form["place"]
+        resp = ""
         return resp
 
 @app.route("/projects", defaults={"project": None})

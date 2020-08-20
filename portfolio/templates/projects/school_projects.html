@@ -276,28 +276,52 @@
     function goProjects() {
         window.location.href="{{ url_for('projects') }}";
     }
+    function dropDown() {
+        var dpmu = document.getElementById("dpmu");
+        if(dpmu.style.display == "block") {
+            dpmu.style.display = "none";
+        } else {
+            dpmu.style.display = "block";
+        }
+    }
 </script>
 <div id="proj-drop" class="btn-group">
     <button id="prjb" class="btn-projects" aria-haspopup="true" type="button" onclick="goProjects()">Projects</button>
-    <button id="pdpd" class="btn-projects" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
-    <div class="dropdown-menu">
+    <button id="pdpd" class="btn-projects" aria-expanded="false" type="button" onclick="dropDown()"><i class="fa fa-caret-down"></i></button>
+    <div id="dpmu" class="dropdown-menu">
         <a class="dropdown-item" href="{{ url_for('projects', project='gomaps') }}">Gomaps</a>
         <a class="dropdown-item" href="{{ url_for('projects', project='geoliberator') }}">GeoLiberator</a>
         <a class="dropdown-item" href="{{ url_for('projects', project='twos_calc') }}">Twos Calculator</a>
     </div>
 </div>
 <script>
-    function myFunction(x) {
-        if (x.matches) { // If media query matches
-            document.getElementById("pdpd").disabled = false;
-        } else {
-            document.getElementById("pdpd").disabled = true;
+    function projectsMediaQuery(x) {
+        if (x.matches) { // Mobile
+            var btn = document.getElementById("pdpd");
+            btn.disabled = false;
+            /*var dpmu = document.getElementById("dpmu");
+            dpmu.style.display = "none";
+            btn.addEventListener("click", function(){
+                if(dpmu.style.display == "none") {
+                    dpmu.style.display = "block";
+                } else {
+                    dpmu.style.display = "none";
+                }
+            });*/
+        } else { // Desktop
+            var btn = document.getElementById("pdpd");
+            var dpmu = document.getElementById("dpmu");
+            btn.disabled =  true;
+            if(dpmu.style.display == "block") {
+                dpmu.style.display = "none";
+            }
+            dpmu.style.display = "";
         }
     }
 
     var x = window.matchMedia("(max-width: 576px)")
-    myFunction(x) // Call listener function at run time
-    x.addListener(myFunction) // Attach listener function on state changes
+    projectsMediaQuery(x) // Call listener function at run time
+    x.addListener(projectsMediaQuery) // Attach listener function on state changes
 </script></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('cv') }}">CV</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>

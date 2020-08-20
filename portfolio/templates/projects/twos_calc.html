@@ -31,28 +31,52 @@
     function goProjects() {
         window.location.href="{{ url_for('projects') }}";
     }
+    function dropDown() {
+        var dpmu = document.getElementById("dpmu");
+        if(dpmu.style.display == "block") {
+            dpmu.style.display = "none";
+        } else {
+            dpmu.style.display = "block";
+        }
+    }
 </script>
 <div id="proj-drop" class="btn-group">
     <button id="prjb" class="btn-projects" aria-haspopup="true" type="button" onclick="goProjects()">Projects</button>
-    <button id="pdpd" class="btn-projects" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
-    <div class="dropdown-menu">
+    <button id="pdpd" class="btn-projects" aria-expanded="false" type="button" onclick="dropDown()"><i class="fa fa-caret-down"></i></button>
+    <div id="dpmu" class="dropdown-menu">
         <a class="dropdown-item" href="{{ url_for('projects', project='gomaps') }}">Gomaps</a>
         <a class="dropdown-item" href="{{ url_for('projects', project='geoliberator') }}">GeoLiberator</a>
         <a class="dropdown-item" href="{{ url_for('projects', project='twos_calc') }}">Twos Calculator</a>
     </div>
 </div>
 <script>
-    function myFunction(x) {
-        if (x.matches) { // If media query matches
-            document.getElementById("pdpd").disabled = false;
-        } else {
-            document.getElementById("pdpd").disabled = true;
+    function projectsMediaQuery(x) {
+        if (x.matches) { // Mobile
+            var btn = document.getElementById("pdpd");
+            btn.disabled = false;
+            /*var dpmu = document.getElementById("dpmu");
+            dpmu.style.display = "none";
+            btn.addEventListener("click", function(){
+                if(dpmu.style.display == "none") {
+                    dpmu.style.display = "block";
+                } else {
+                    dpmu.style.display = "none";
+                }
+            });*/
+        } else { // Desktop
+            var btn = document.getElementById("pdpd");
+            var dpmu = document.getElementById("dpmu");
+            btn.disabled =  true;
+            if(dpmu.style.display == "block") {
+                dpmu.style.display = "none";
+            }
+            dpmu.style.display = "";
         }
     }
 
     var x = window.matchMedia("(max-width: 576px)")
-    myFunction(x) // Call listener function at run time
-    x.addListener(myFunction) // Attach listener function on state changes
+    projectsMediaQuery(x) // Call listener function at run time
+    x.addListener(projectsMediaQuery) // Attach listener function on state changes
 </script></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('cv') }}">CV</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
@@ -77,6 +101,17 @@
                 </div><script>
     $(document).ready(function(){
         $(".tcc").click(function(){
+            var w = document.getElementById("w").value;
+            var num1 = document.getElementById("num1");
+            var num2 = document.getElementById("num2");
+            if(num1.value.length < parseInt(w)) {
+                var zeroes = "0".repeat(parseInt(w) - num1.value.length);
+                num1.value = zeroes + num1.value;
+            }
+            if(num2.value.length < parseInt(w)) {
+                var zeroes = "0".repeat(parseInt(w) - num2.value.length);
+                num2.value = zeroes + num2.value;
+            }
             $.post("{{ url_for('twos_calc') }}",
             {
                 w: document.getElementById("w").value,
@@ -88,10 +123,28 @@
                 var ans = JSON.parse(data);
                 var tcab = document.getElementById("tcab");
                 var tcad = document.getElementById("tcad");
+                var tcabt = document.getElementById("tcabt");
+                var tcadt = document.getElementById("tcadt");
                 tca.style.visibility = "visible";
-                tcab.innerHTML = "Binary Result = " + ans[0];
-                tcad.innerHTML = "Decimal Result = " + ans[1];
+                tcab.innerHTML = ans[0];
+                tcad.innerHTML = ans[1];
+                tcabt.innerHTML = ans[2];
+                tcadt.innerHTML = ans[3];
             });
+        });
+        $("#w").change(function() {
+            var w = this.value;
+            $(".binary-only").attr("maxlength", w);
+            var num1 = document.getElementById("num1");
+            var num2 = document.getElementById("num2");
+            if(num1.value.length > parseInt(w)) {
+                var idx = num1.value.length - parseInt(w);
+                num1.value = num1.value.substring(idx);
+            }
+            if(num2.value.length > parseInt(w)) {
+                var idx = num2.value.length - parseInt(w);
+                num2.value = num2.value.substring(idx);
+            }
         });
         jQuery(".binary-only").keyup(function() {
            this.value = this.value.replace(/[^01]/g, '');
@@ -137,18 +190,29 @@
         <b><i>bits</i></b>
     </p>
     <div class="twos-calc-nums">
-        <input id="num1" class="binary-only" type="text" value="0101" />
+        <input id="num1" class="binary-only" type="text" maxlength=4 value="0101" />
             <select id="arith" class="btn btn-outline-primary">
                 <option value="+" selected>+</option>
                 <option value="-">—</option>
                 <option value="x">x</option>
                 <option value="/">÷</option>
             </select>
-        <input id="num2" class="binary-only" type="text" value="1010" />
+        <input id="num2" class="binary-only" type="text" maxlength=4 value="1010" />
         <button class="btn btn-outline-primary tcc">=</button>
-        <div id="tca" style="font-size: 25px; font-weight: bold; visibility: hidden;">
-            <p id="tcab">Binary Result: </p>
-            <p id="tcad">Decimal Result: </p>
+        <div id="tca" style="font-size: 25px; font-weight: bold; visibility: hidden;"><br>
+            <table class="center">
+                <tr><th></th><th>Solution</th><th>Truncated</th></tr>
+                <tr>
+                    <td>Binary Result:</td>
+                    <td id="tcab" class="td-bina"></td>
+                    <td id="tcabt" class="td-bina"></td>
+                </tr>
+                <tr>
+                    <td>Decimal Result:</td>
+                    <td id="tcad" class="td-deca"></td>
+                    <td id="tcadt" class="td-deca"></td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

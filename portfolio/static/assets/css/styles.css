@@ -1,14 +1,63 @@
-.btn-projects:hover {
-  color: rgba(255,255,255,0.75);
+#gla {
+  color: blue;
+  border: 3px solid #1f2021;
 }
 
-.btn-projects:hover .dropdown-menu {
-  color: rgba(255,255,255,0.75);
+.geoliberator {
+  text-align: center;
+  font-size: 25px;
+}
+
+@media (max-width: 576px) {
+  .geoliberator {
+    text-align: left;
+    font-size: 20px;
+  }
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table, th, td {
+  border: 2px solid #1f2021;
+  text-align: right;
+  font-size: 24px;
+}
+
+@media (max-width: 576px) {
+  table, th, td {
+    font-size: 20px;
+  }
+}
+
+.td-bina {
+  word-break: break-word;
+  color: rgb(0,180,0);
+}
+
+.td-deca {
+  text-align: right;
+  color: blue;
+  font-weight: bold;
 }
 
 .btn-group:hover .dropdown-menu {
   display: block;
   color: rgba(255,255,255,0.75);
+}
+
+@media (max-width: 576px) {
+  .btn-group:hover .dropdown-menu {
+    display: none;
+    color: rgba(255,255,255,0.75);
+  }
+}
+
+.btn-projects:hover {
+  color: rgba(255,255,255,0.75);
+  cursor: pointer;
 }
 
 .btn-projects {
@@ -31,7 +80,7 @@
 }
 
 .twos-calc-nums {
-  padding-left: 110px;
+  padding-left: 45px;
 }
 
 @media (max-width: 576px) {
@@ -101,7 +150,7 @@
   font-size: 30px;
   line-height: 1.5;
   border-radius: 2em;
-  transition: color .5s ease-in-out,background-color .5s ease-in-out,border-color .5s ease-in-out,box-shadow .5s ease-in-out;
+  transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out,box-shadow .2s ease-in-out;
 }
 
 .portfolio-navbar .logo {
@@ -163,12 +212,28 @@ a:hover {
   display: block;
 }
 
-#proj-drop {
-  padding-right: 0px;
-  margin-right: 0px;
-}
-
 .disabled {
   pointer-events: none;
+}
+
+#proj-drop {
+  padding-left: 0px;
+  margin-left: -8px;
+}
+
+@media (max-width:1199px) {
+  .nav-item {
+    margin-right: -12px;
+  }
+}
+
+#parse {
+  height: 50px;
+  padding-top: 3px;
+}
+
+.geolib {
+  height: 50px;
+  padding-top: 0px;
 }
 

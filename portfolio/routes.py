@@ -2,6 +2,7 @@ from flask import Flask, session, redirect, url_for, render_template,\
      request, make_response
 from datetime import datetime
 from GeoLiberator import parse_address
+from gomaps import maps_search
 from portfolio import application as app
 from config import Config
 from portfolio.tools import *
@@ -56,9 +57,12 @@ def GL():
 @app.route("/gmapi", methods=["POST"])
 def gmapi():
     if request.method == "POST":
-        addr = request.form["place"]
-        resp = ""
-        return resp
+        place = request.form["place"]
+        resp = maps_search(place)
+        if len(list(resp)) == 1:
+            return json.dumps(resp[0].get_values())
+        else:
+            pass
 
 @app.route("/projects", defaults={"project": None})
 @app.route("/projects/<project>", methods=["GET", "POST"])

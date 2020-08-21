@@ -1,18 +1,18 @@
-language: python
-python:
-  - "3.7"
-cache: pip
-install: 
-  - pip install -r requirements.txt
-script:
-  - python3 application.py
-before_deploy:
-  - chmod -R 777 *
-deploy:
-  provider: elasticbeanstalk
-  access_key_id: $AWS_AK
-  secret_access_key: $AWS_SAK
-  region: "us-east-1"
-  app: "jakemorfe.tech"
-  env: "flask-env"
-  bucket_name: "elasticbeanstalk-us-east-1-339529194785"
+# language: python
+# python:
+#   - "3.7"
+# cache: pip
+# install: 
+#   - pip install -r requirements.txt
+# script:
+#   - python3 application.py
+# before_deploy:
+#   - chmod -R 777 *
+# deploy:
+#   provider: elasticbeanstalk
+#   access_key_id: $AWS_AK
+#   secret_access_key: $AWS_SAK
+#   region: "us-east-1"
+#   app: "jakemorfe.tech"
+#   env: "flask-env"
+#   bucket_name: "elasticbeanstalk-us-east-1-339529194785"

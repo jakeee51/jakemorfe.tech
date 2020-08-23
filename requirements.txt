@@ -4,6 +4,6 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 Werkzeug==1.0.1
-GeoLiberator==0.3.6
-pandas==1.0.5
-gomaps==0.2.4
+GeoLiberator>=0.3.6
+pandas>=1.0.5
+gomaps>=0.2.4

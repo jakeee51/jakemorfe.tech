@@ -59,10 +59,12 @@ def gmapi():
     if request.method == "POST":
         place = request.form["place"]
         resp = maps_search(place)
+        print(resp); print(list(resp), len(list(resp)))
         if len(list(resp)) == 1:
             return json.dumps(resp[0].get_values())
         else:
-            pass
+            lst = [str(obj) for obj in resp.list()]
+            return json.dumps(lst)
 
 @app.route("/projects", defaults={"project": None})
 @app.route("/projects/<project>", methods=["GET", "POST"])

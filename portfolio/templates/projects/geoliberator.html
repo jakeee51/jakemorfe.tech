@@ -104,7 +104,7 @@
             $.post("{{ url_for('GL') }}",
             {
                 addr: document.getElementById("addr").value,
-                parse: document.getElementById("parse").value,
+                parse: document.getElementById("parse").value
             },
             function(data, status){
                 var gla = document.getElementById("gla");
@@ -124,7 +124,7 @@
 			<option value="state">state</option>
 			<option value="zipcode">zipcode</option>
         </select>
-    <button class="btn btn-outline-primary geolib">Clean!</button>
+    <button class="btn btn-outline-primary geolib">Parse!</button>
     <div id="GLA" style="font-size: 25px; font-weight: bold; visibility: hidden;"><br>
     	<p id="gla">123 NORTH EXAMPLE STREET, NEW YORK 01234</p>
     </div>

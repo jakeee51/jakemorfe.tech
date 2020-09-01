@@ -101,33 +101,24 @@
                     </div>
                 </div><script>
     $(document).ready(function(){
-        $(".geolib").click(function(){
-            $.post("{{ url_for('GL') }}",
+        $(".gmapi").click(function(){
+            $.post("{{ url_for('gmapi') }}",
             {
-                addr: document.getElementById("addr").value,
-                parse: document.getElementById("parse").value,
+                place: document.getElementById("place").value,
             },
             function(data, status){
-                var gla = document.getElementById("gla");
-                GLA.style.visibility = "visible";
-                gla.innerHTML = data;
+                var gmd = document.getElementById("gmd");
+                GMD.style.visibility = "visible";
+                gmd.innerHTML = data;
             });
         });
     });
 </script>
 <div class="geoliberator"><br>
-    <input id="addr" type="text" maxlength=64 size=32 value="123 Example St, NY 01234" />
-        <select id="parse" class="btn btn-outline-primary">
-            <option value="full">full</option>
-            <option value="address" selected>address</option>
-            <option value="street">street</option>
-            <option value="number">number</option>
-			<option value="state">state</option>
-			<option value="zipcode">zipcode</option>
-        </select>
-    <button class="btn btn-outline-primary geolib">Clean!</button>
-    <div id="GLA" style="font-size: 25px; font-weight: bold; visibility: hidden;"><br>
-    	<p id="gla">123 NORTH EXAMPLE STREET, NEW YORK 01234</p>
+    <input id="place" type="text" maxlength=64 size=32 value="Tops Diner, Newark NJ" />
+    <button class="btn btn-outline-primary gmapi">Get Data!</button>
+    <div id="GMD" style="font-size: 25px; font-weight: bold; visibility: hidden;"><br>
+    	<p id="gmd">Tops Diner</p>
     </div>
 </div>
                 <div class="more-projects">

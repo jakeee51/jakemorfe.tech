@@ -5,7 +5,7 @@ cache: pip
 install: 
   - pip install -r requirements.txt
 script:
-  - python3 application.py
+  - python3 portfolio_tests.py
 before_deploy:
   - chmod -R 777 *
 deploy:

@@ -106,7 +106,7 @@
             {
                 place: document.getElementById("place").value,
             },
-            function(data, status){
+            function(data){
                 var gmd = document.getElementById("gmd");
                 GMD.style.visibility = "visible";
                 gmd.innerHTML = data;
@@ -116,7 +116,7 @@
 </script>
 <div class="geoliberator"><br>
     <input id="place" type="text" maxlength=64 size=32 value="Tops Diner, Newark NJ" />
-    <button class="btn btn-outline-primary gmapi">Get Data!</button>
+    <button class="btn btn-outline-primary gmapi" disabled>Get Data!</button>
     <div id="GMD" style="font-size: 25px; font-weight: bold; visibility: hidden;"><br>
     	<p id="gmd">Tops Diner</p>
     </div>

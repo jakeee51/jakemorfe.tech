@@ -99,6 +99,21 @@
                         <div class="tags"><span class="meta-heading">Tags</span><a href="https://github.com/jakeee51/Twos-Calculator" target="_blank">Source Code</a><span class="meta-heading">Date Completed</span><span>08-15-2020</span></div>
                     </div>
                 </div><script>
+	function get_decimal(bin) {
+		var ret = 0; var bits = bin.length;
+		for(i = 0; i < bits; i++) {
+			var val = Math.pow(2, bits-1-i);
+			if(i == 0) {
+				if(bin[i] == '1') {
+					ret += -1*val;
+				}
+			} else {
+				if(bin[i] == '1')
+					ret += val;
+			}
+		}
+		return ret;
+	}
     $(document).ready(function(){
         $(".tcc").click(function(){
             var w = document.getElementById("w").value;
@@ -146,8 +161,19 @@
                 num2.value = num2.value.substring(idx);
             }
         });
+        $("#num1").keyup(function() {
+	        var dec = get_decimal(String(this.value));
+	        var tc_num1 = document.getElementById("tc_num1");
+	        tc_num1.innerHTML = dec;
+            
+        });
+        $("#num2").keyup(function() {
+	        var dec = get_decimal(String(this.value));
+	        var tc_num2 = document.getElementById("tc_num2");
+	        tc_num2.innerHTML = dec;
+        });
         jQuery(".binary-only").keyup(function() {
-           this.value = this.value.replace(/[^01]/g, '');
+        	this.value = this.value.replace(/[^01]/g, '');
         });
     });
 </script>
@@ -189,6 +215,14 @@
         </select>
         <b><i>bits</i></b>
     </p>
+    <span id="tc_num1" class="dec_nums" style="text-align: left; padding-right: 300px;">5</span>
+        <select class="btn btn-outline-primary" style="padding-left: 0x; padding-right: 0px;" hidden>
+            <option value="+" selected>+</option>
+            <option value="-">—</option>
+            <option value="x">x</option>
+            <option value="/">÷</option>
+        </select>
+    <span id="tc_num2" class="dec_nums">-6</span>
     <div class="twos-calc-nums">
         <input id="num1" class="binary-only" type="text" maxlength=4 value="0101" />
             <select id="arith" class="btn btn-outline-primary">

@@ -1,3 +1,10 @@
+.dec_nums {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
 .superscript {
   vertical-align: super;
   font-size: smaller;

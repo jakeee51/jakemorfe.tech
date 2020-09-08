@@ -25,9 +25,9 @@
             <div
                 class="collapse navbar-collapse text-capitalize" id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('about_me') }}">About me</a></li>
-                    <li class="nav-item" role="presentation"><script>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about_me') }}">About me</a></li>
+                    <li class="nav-item"><script>
     function goProjects() {
         window.location.href="{{ url_for('projects') }}";
     }
@@ -78,8 +78,8 @@
     projectsMediaQuery(x) // Call listener function at run time
     x.addListener(projectsMediaQuery) // Attach listener function on state changes
 </script></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('cv') }}">CV</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('cv') }}">CV</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
                 </ul>
         </div>
         </div>
@@ -164,16 +164,15 @@
         $("#num1").keyup(function() {
 	        var dec = get_decimal(String(this.value));
 	        var tc_num1 = document.getElementById("tc_num1");
+            this.value = this.value.replace(/[^01]/g, '');
 	        tc_num1.innerHTML = dec;
             
         });
         $("#num2").keyup(function() {
 	        var dec = get_decimal(String(this.value));
 	        var tc_num2 = document.getElementById("tc_num2");
+            this.value = this.value.replace(/[^01]/g, '');
 	        tc_num2.innerHTML = dec;
-        });
-        jQuery(".binary-only").keyup(function() {
-        	this.value = this.value.replace(/[^01]/g, '');
         });
     });
 </script>

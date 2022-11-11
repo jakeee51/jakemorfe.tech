@@ -30,8 +30,9 @@ def send_post(route, data={}):
     url = Config.DOMAIN + '/' + str(route.strip('/'))
     data_encoded = urllib.parse.urlencode(data)
     data_encoded = data_encoded.encode("ascii")
-    resp = urllib.request.urlopen(url, data_encoded)
-    return resp.read().decode()
+    with urllib.request.urlopen(url, data_encoded) as resp:
+        return resp.read().decode()
+    return "500 Error"
 
 def get_tca(args):
     CREATE_NO_WINDOW = 0x08000000
